@@ -10932,9 +10932,29 @@ header.masthead {
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-iserve3.png");
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  /*background-attachment: scroll;*/
   background-size: cover;
+
+  /* Enable subtle scroll motion */
+  background-attachment: fixed;
+
+  /* Add a soft zoom/pan animation */
+  animation: bgMove 20s ease-in-out infinite alternate;
+
 }
+
+@keyframes bgMove {
+  0% {
+    background-position: center center;
+    transform: scale(1);
+  }
+  100% {
+    background-position: center top;
+    transform: scale(1.02);
+  }
+}
+
+
 header.masthead h1, header.masthead .h1 {
   font-size: 2.25rem;
 }
