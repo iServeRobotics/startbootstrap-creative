@@ -10929,7 +10929,8 @@ hr.divider-light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(200, 200, 200, 0.05) 0%, rgba(200, 200, 200, 0.05) 100%), url("../assets/img/bg-iserve3.png");
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("../assets/img/bg-iserve3.png");
+
   background-position: center;
   background-repeat: no-repeat;
   /*background-attachment: scroll;*/
