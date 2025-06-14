@@ -10939,7 +10939,7 @@ header.masthead {
   background-attachment: fixed;
 
   /* Add a soft zoom/pan animation */
-  animation: bgMove 20s ease-in-out infinite alternate;
+  animation: bgMove 10s ease-in-out infinite alternate;
 
 }
 
