@@ -6,8 +6,7 @@ import Simulation from './simulation.js';
 // Make Simulation available globally for button onclick handlers
 window.Simulation = Simulation;
 
-// Initialize and auto-start on page load
+// Initialize on page load (auto-starts internally)
 document.addEventListener('DOMContentLoaded', () => {
     Simulation.init();
-    Simulation.start();
 });
