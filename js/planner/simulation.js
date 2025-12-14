@@ -27,8 +27,6 @@ const Simulation = {
         Config.init();
         this.setupEventListeners();
         this.reset();
-        // Auto-start simulation after a brief delay to ensure everything is ready
-        setTimeout(() => this.start(), 100);
     },
 
     setupEventListeners() {
