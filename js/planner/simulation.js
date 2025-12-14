@@ -89,6 +89,7 @@ const Simulation = {
                 }
             }
 
+            this.updatePauseButton();
             this.animationId = requestAnimationFrame((t) => this.gameLoop(t));
         }
     },
@@ -97,6 +98,33 @@ const Simulation = {
         this.isRunning = false;
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);
+        }
+        this.updatePauseButton();
+    },
+
+    toggle() {
+        if (this.isRunning) {
+            this.pause();
+        } else {
+            this.start();
+        }
+    },
+
+    updatePauseButton() {
+        const icon = document.getElementById('pauseIcon');
+        const label = document.getElementById('pauseLabel');
+        const btn = document.getElementById('pauseBtn');
+
+        if (this.isRunning) {
+            icon.className = 'bi-pause-fill';
+            label.textContent = 'Pause';
+            btn.classList.remove('btn-start');
+            btn.classList.add('btn-pause');
+        } else {
+            icon.className = 'bi-play-fill';
+            label.textContent = 'Start';
+            btn.classList.remove('btn-pause');
+            btn.classList.add('btn-start');
         }
     },
 

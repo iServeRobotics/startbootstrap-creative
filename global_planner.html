@@ -180,8 +180,8 @@
                         <span id="robotSpeedDisplay" style="font-weight: 700; color: #f57c00; min-width: 50px;">0.5</span>
                         <span style="color: #666; font-size: 0.85rem;">cells/s</span>
                     </div>
-                    <button class="btn-pause" id="pauseBtn" onclick="Simulation.pause()">
-                        <i class="bi-pause-fill"></i> Pause
+                    <button class="btn-pause" id="pauseBtn" onclick="Simulation.toggle()">
+                        <i class="bi-pause-fill" id="pauseIcon"></i> <span id="pauseLabel">Pause</span>
                     </button>
                     <button class="btn-reset" onclick="Simulation.reset()">
                         <i class="bi-arrow-counterclockwise"></i> Reset
