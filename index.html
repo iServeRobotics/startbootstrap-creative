@@ -333,6 +333,122 @@
                 </div>
             </div>
         </section> -->
+        <!-- Partners -->
+        <section id="partners" style="background: #1a1d23; overflow: hidden; padding: 2.5rem 0 2rem;">
+            <style>
+                @keyframes marquee-scroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                .marquee-track {
+                    display: flex;
+                    width: max-content;
+                    animation: marquee-scroll 20s linear infinite;
+                }
+                .marquee-track:hover {
+                    animation-play-state: paused;
+                }
+                .marquee-item {
+                    flex: 0 0 auto;
+                    width: 200px;
+                    padding: 0 2.5rem;
+                    text-align: center;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    opacity: 0.5;
+                    transition: opacity 0.4s ease, transform 0.4s ease;
+                    cursor: default;
+                }
+                .marquee-item:hover {
+                    opacity: 1;
+                    transform: translateY(-4px);
+                }
+                .marquee-item a {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                }
+                .marquee-item i {
+                    font-size: 1.8rem;
+                    color: rgba(255,255,255,0.85);
+                    display: block;
+                    margin-bottom: 0.5rem;
+                }
+                .marquee-item img {
+                    height: 2rem;
+                    margin-bottom: 0.5rem;
+                    filter: brightness(0) invert(1);
+                    opacity: 0.85;
+                    object-fit: contain;
+                }
+                .marquee-item span {
+                    font-family: "Merriweather Sans", sans-serif;
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                    letter-spacing: 0.15em;
+                    text-transform: uppercase;
+                    color: rgba(255,255,255,0.45);
+                    margin-top: 0.2rem;
+                }
+                .partners-heading {
+                    font-family: "Merriweather Sans", sans-serif;
+                    color: #fff;
+                }
+                .marquee-wrapper {
+                    position: relative;
+                }
+                .marquee-wrapper::before,
+                .marquee-wrapper::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    width: 100px;
+                    z-index: 2;
+                    pointer-events: none;
+                }
+                .marquee-wrapper::before {
+                    left: 0;
+                    background: linear-gradient(to right, #1a1d23, transparent);
+                }
+                .marquee-wrapper::after {
+                    right: 0;
+                    background: linear-gradient(to left, #1a1d23, transparent);
+                }
+                @media (max-width: 768px) {
+                    .marquee-track { animation-duration: 30s; }
+                    .marquee-item { width: 150px; padding: 0 1.25rem; }
+                    .marquee-item i { font-size: 2.2rem; }
+                }
+            </style>
+            <div class="container px-4 px-lg-5">
+                <h2 class="text-center mt-0 partners-heading" style="font-size: 1.4rem;">Partners & Collaborators</h2>
+                <hr class="divider" style="margin: 0.75rem auto;" />
+            </div>
+            <div class="marquee-wrapper mt-3">
+                <div class="marquee-track">
+                    <!-- Set 1 -->
+                    <div class="marquee-item"><a href="https://www.renesas.com/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/Renesas_Electronics_logo.svg" alt="Renesas" /></a></div>
+                    <div class="marquee-item"><a href="https://www.3nucr.com/research.html" target="_blank" style="text-decoration: none;"><img src="assets/partners/ucr.png" alt="3NUCR Lab" /><span>3NUCR Lab</span></a></div>
+                    <div class="marquee-item"><a href="https://yodolabs.jp/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/yodolabs.svg" alt="Yodolabs" /></a></div>
+                    <!-- Set 2 (duplicate for seamless loop) -->
+                    <div class="marquee-item"><a href="https://www.renesas.com/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/Renesas_Electronics_logo.svg" alt="Renesas" /></a></div>
+                    <div class="marquee-item"><a href="https://www.3nucr.com/research.html" target="_blank" style="text-decoration: none;"><img src="assets/partners/ucr.png" alt="3NUCR Lab" /><span>3NUCR Lab</span></a></div>
+                    <div class="marquee-item"><a href="https://yodolabs.jp/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/yodolabs.svg" alt="Yodolabs" /></a></div>
+                    <!-- Set 3 (extra duplicate for wide screens) -->
+                    <div class="marquee-item"><a href="https://www.renesas.com/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/Renesas_Electronics_logo.svg" alt="Renesas" /></a></div>
+                    <div class="marquee-item"><a href="https://www.3nucr.com/research.html" target="_blank" style="text-decoration: none;"><img src="assets/partners/ucr.png" alt="3NUCR Lab" /><span>3NUCR Lab</span></a></div>
+                    <div class="marquee-item"><a href="https://yodolabs.jp/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/yodolabs.svg" alt="Yodolabs" /></a></div>
+                    <!-- Set 4 (extra for wide screens) -->
+                    <div class="marquee-item"><a href="https://www.renesas.com/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/Renesas_Electronics_logo.svg" alt="Renesas" /></a></div>
+                    <div class="marquee-item"><a href="https://www.3nucr.com/research.html" target="_blank" style="text-decoration: none;"><img src="assets/partners/ucr.png" alt="3NUCR Lab" /><span>3NUCR Lab</span></a></div>
+                    <div class="marquee-item"><a href="https://yodolabs.jp/en" target="_blank" style="text-decoration: none;"><img src="assets/partners/yodolabs.svg" alt="Yodolabs" /></a></div>
+                </div>
+            </div>
+        </section>
         <!-- Footer-->
         <footer class="bg-light py-4">
             <div class="container px-4 px-lg-5 text-center">
