@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-P2R7KV6LM0"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-P2R7KV6LM0');
+        </script>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Physical World Skills for Open CLAWS — a collaboration between iServe Robotics and Vector OS" />
+        <meta name="author" content="iServe Robotics" />
+        <title>CLAWS — Physical World Skills | iServe Robotics</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap Icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+        <style>
+            :root {
+                --claws-bg: #0c0e12;
+                --claws-surface: #13161c;
+                --claws-border: rgba(244, 98, 58, 0.12);
+                --claws-accent: #f4623a;
+                --claws-accent-dim: rgba(244, 98, 58, 0.6);
+                --claws-text: #c8ccd4;
+                --claws-text-muted: #6b7280;
+                --claws-glow: rgba(244, 98, 58, 0.08);
+            }
+
+            body {
+                background: var(--claws-bg);
+                color: var(--claws-text);
+            }
+
+            /* --- Masthead --- */
+            .claws-hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                overflow: hidden;
+                background: var(--claws-bg);
+            }
+
+            .claws-hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(244, 98, 58, 0.06), transparent),
+                    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(244, 98, 58, 0.03), transparent);
+                pointer-events: none;
+            }
+
+            /* grid lines */
+            .claws-hero::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(244, 98, 58, 0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(244, 98, 58, 0.03) 1px, transparent 1px);
+                background-size: 60px 60px;
+                mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+                -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+                pointer-events: none;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+                max-width: 800px;
+                padding: 0 2rem;
+            }
+
+            .claws-tag {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.7rem;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                color: var(--claws-accent);
+                border: 1px solid var(--claws-border);
+                padding: 0.4rem 1.2rem;
+                display: inline-block;
+                margin-bottom: 2.5rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 0.2s forwards;
+            }
+
+            .claws-title {
+                font-family: 'Merriweather Sans', sans-serif;
+                font-size: clamp(2.4rem, 6vw, 4.2rem);
+                font-weight: 700;
+                color: #fff;
+                line-height: 1.1;
+                margin-bottom: 0.5rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 0.4s forwards;
+            }
+
+            .claws-title span {
+                color: var(--claws-accent);
+            }
+
+            .claws-subtitle {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: clamp(0.75rem, 1.8vw, 0.95rem);
+                color: var(--claws-text-muted);
+                letter-spacing: 0.08em;
+                margin-bottom: 2rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 0.55s forwards;
+            }
+
+            .claws-desc {
+                font-family: 'Merriweather', serif;
+                font-size: 1.05rem;
+                line-height: 1.8;
+                color: var(--claws-text);
+                max-width: 580px;
+                margin: 0 auto 2.5rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 0.7s forwards;
+            }
+
+            .collab-logos {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 0.9s forwards;
+            }
+
+            .collab-logos img {
+                height: 1.6rem;
+                filter: brightness(0) invert(1);
+                opacity: 0.5;
+            }
+
+            .collab-logos .collab-x {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.75rem;
+                color: var(--claws-text-muted);
+                letter-spacing: 0.15em;
+            }
+
+            .scroll-cue {
+                position: absolute;
+                bottom: 2.5rem;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                opacity: 0;
+                animation: claws-fade-in 0.8s ease 1.2s forwards;
+            }
+
+            .scroll-cue span {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--claws-text-muted);
+            }
+
+            .scroll-cue i {
+                font-size: 1rem;
+                color: var(--claws-accent-dim);
+                animation: scroll-bounce 2s ease-in-out infinite;
+            }
+
+            @keyframes scroll-bounce {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(6px); }
+            }
+
+            /* --- Section common --- */
+            .claws-section {
+                padding: 6rem 0;
+                position: relative;
+            }
+
+            .claws-section-alt {
+                background: var(--claws-surface);
+                border-top: 1px solid var(--claws-border);
+                border-bottom: 1px solid var(--claws-border);
+            }
+
+            .section-label {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.65rem;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: var(--claws-accent);
+                margin-bottom: 1rem;
+            }
+
+            .section-title {
+                font-family: 'Merriweather Sans', sans-serif;
+                font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 1rem;
+            }
+
+            .section-text {
+                font-family: 'Merriweather', serif;
+                font-size: 0.95rem;
+                line-height: 1.8;
+                color: var(--claws-text);
+                max-width: 560px;
+            }
+
+            /* --- The Problem / Why --- */
+            .why-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+            }
+
+            @media (max-width: 768px) {
+                .why-grid { grid-template-columns: 1fr; }
+            }
+
+            .why-visual {
+                position: relative;
+                padding: 2rem;
+            }
+
+            .terminal-block {
+                background: #0a0c10;
+                border: 1px solid var(--claws-border);
+                border-radius: 8px;
+                padding: 1.5rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.78rem;
+                line-height: 1.9;
+                color: var(--claws-text-muted);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .terminal-block::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg, transparent, var(--claws-accent-dim), transparent);
+            }
+
+            .terminal-block .t-prompt {
+                color: var(--claws-accent);
+            }
+
+            .terminal-block .t-cmd {
+                color: #e2e8f0;
+            }
+
+            .terminal-block .t-comment {
+                color: #3d4450;
+            }
+
+            .terminal-block .t-output {
+                color: #4ade80;
+            }
+
+            /* --- Skills cards --- */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+                margin-top: 3rem;
+            }
+
+            @media (max-width: 992px) {
+                .skills-grid { grid-template-columns: 1fr 1fr; }
+            }
+            @media (max-width: 576px) {
+                .skills-grid { grid-template-columns: 1fr; }
+            }
+
+            .skill-card {
+                background: var(--claws-bg);
+                border: 1px solid var(--claws-border);
+                border-radius: 8px;
+                padding: 2rem 1.5rem;
+                transition: border-color 0.3s ease, box-shadow 0.3s ease;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .skill-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, var(--claws-accent), transparent);
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .skill-card:hover {
+                border-color: rgba(244, 98, 58, 0.25);
+                box-shadow: 0 4px 24px rgba(244, 98, 58, 0.06);
+            }
+
+            .skill-card:hover::before {
+                opacity: 1;
+            }
+
+            .skill-icon {
+                font-size: 1.3rem;
+                color: var(--claws-accent);
+                margin-bottom: 1rem;
+                display: block;
+            }
+
+            .skill-card h3 {
+                font-family: 'Merriweather Sans', sans-serif;
+                font-size: 1rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 0.75rem;
+            }
+
+            .skill-card p {
+                font-size: 0.85rem;
+                line-height: 1.7;
+                color: var(--claws-text-muted);
+                margin: 0;
+            }
+
+            /* --- Architecture --- */
+            .arch-flow {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0;
+                margin-top: 3rem;
+                flex-wrap: wrap;
+            }
+
+            .arch-node {
+                background: var(--claws-surface);
+                border: 1px solid var(--claws-border);
+                border-radius: 8px;
+                padding: 1.5rem 2rem;
+                text-align: center;
+                min-width: 160px;
+            }
+
+            .arch-node .node-label {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.6rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--claws-accent);
+                margin-bottom: 0.5rem;
+            }
+
+            .arch-node .node-title {
+                font-family: 'Merriweather Sans', sans-serif;
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #fff;
+            }
+
+            .arch-node .node-desc {
+                font-size: 0.75rem;
+                color: var(--claws-text-muted);
+                margin-top: 0.3rem;
+            }
+
+            .arch-arrow {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 1.2rem;
+                color: var(--claws-accent-dim);
+                padding: 0 1rem;
+                flex-shrink: 0;
+            }
+
+            @media (max-width: 768px) {
+                .arch-flow { flex-direction: column; gap: 0; }
+                .arch-arrow { transform: rotate(90deg); padding: 0.5rem 0; }
+            }
+
+            /* --- CTA --- */
+            .claws-cta {
+                text-align: center;
+                padding: 5rem 0;
+            }
+
+            .cta-links {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+                flex-wrap: wrap;
+            }
+
+            .cta-links a {
+                font-family: 'JetBrains Mono', monospace;
+                font-size: 0.8rem;
+                letter-spacing: 0.05em;
+                padding: 0.75rem 1.8rem;
+                border-radius: 4px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .btn-claws-primary {
+                background: var(--claws-accent);
+                color: #fff;
+                border: 1px solid var(--claws-accent);
+            }
+
+            .btn-claws-primary:hover {
+                background: transparent;
+                color: var(--claws-accent);
+            }
+
+            .btn-claws-ghost {
+                background: transparent;
+                color: var(--claws-text);
+                border: 1px solid var(--claws-border);
+            }
+
+            .btn-claws-ghost:hover {
+                border-color: var(--claws-accent-dim);
+                color: #fff;
+            }
+
+            /* --- Footer override --- */
+            .claws-footer {
+                background: var(--claws-bg) !important;
+                border-top: 1px solid var(--claws-border);
+            }
+
+            .claws-footer .small {
+                color: var(--claws-text-muted) !important;
+            }
+
+            .claws-footer a {
+                color: var(--claws-accent) !important;
+            }
+
+            /* --- Animations --- */
+            @keyframes claws-fade-in {
+                from { opacity: 0; transform: translateY(16px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            .reveal {
+                opacity: 0;
+                transform: translateY(20px);
+                transition: opacity 0.6s ease, transform 0.6s ease;
+            }
+
+            .reveal.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            /* --- Nav override for dark page --- */
+            #mainNav {
+                background: rgba(12, 14, 18, 0.95) !important;
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+            }
+
+            #mainNav .navbar-brand,
+            #mainNav .nav-link {
+                color: var(--claws-text) !important;
+            }
+
+            #mainNav .nav-link:hover {
+                color: #fff !important;
+            }
+        </style>
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="index.html"><img src="assets/iServe Logo.png" alt="iServe Robotics" style="height: 18px;" /></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="https://github.com/VectorRobotics/vector-os-nano" target="_blank">Code</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="claws-hero">
+            <div class="hero-content">
+                <h1 class="claws-title">Physical World Skills<br/>for Open <span>CLAWS</span></h1>
+                <p class="claws-subtitle">Grounding AI agents in the real world</p>
+                <p class="claws-desc">Agents can reason, plan, and code. But they can't open a door, pick up a package, or navigate a warehouse. CLAWS bridges that gap &mdash; composable skills that give agents a physical presence.</p>
+                <div class="collab-logos">
+                    <span class="collab-x">Supported by</span>
+                    <img src="assets/partners/vector_transparent.png" alt="Vector OS" />
+                </div>
+            </div>
+            <div class="scroll-cue">
+                <span>Scroll</span>
+                <i class="bi-chevron-down"></i>
+            </div>
+        </section>
+
+        <!-- Why -->
+        <section class="claws-section">
+            <div class="container px-4 px-lg-5">
+                <div class="why-grid">
+                    <div class="reveal">
+                        <div class="section-label">The Gap</div>
+                        <h2 class="section-title">Agents think. Robots move.<br/>Neither does both.</h2>
+                        <p class="section-text">Large language models can decompose complex goals into steps. Robots can execute precise motor control. But there's no standard way to connect intent to physical execution. Skills are hardcoded, brittle, and locked inside proprietary stacks.</p>
+                        <p class="section-text" style="margin-top: 1rem;">CLAWS defines an open skill layer &mdash; a shared vocabulary between agents and the physical world.</p>
+                    </div>
+                    <div class="why-visual reveal">
+                        <div class="terminal-block">
+                            <span class="t-comment"># agent decomposes a goal</span><br/>
+                            <span class="t-prompt">agent&gt;</span> <span class="t-cmd">deliver package to room 204</span><br/><br/>
+                            <span class="t-comment"># CLAWS resolves to physical skills</span><br/>
+                            <span class="t-prompt">claws&gt;</span> <span class="t-cmd">navigate_to(building_b, floor_2)</span><br/>
+                            <span class="t-prompt">claws&gt;</span> <span class="t-cmd">open_door(room_204)</span><br/>
+                            <span class="t-prompt">claws&gt;</span> <span class="t-cmd">place_object(package, desk)</span><br/><br/>
+                            <span class="t-comment"># execution feedback</span><br/>
+                            <span class="t-output">[ok] navigated &mdash; 47s, 0 replans</span><br/>
+                            <span class="t-output">[ok] door opened &mdash; handle type: lever</span><br/>
+                            <span class="t-output">[ok] placed &mdash; clearance verified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="claws-section claws-section-alt">
+            <div class="container px-4 px-lg-5">
+                <div class="text-center reveal">
+                    <div class="section-label">Skill Domains</div>
+                    <h2 class="section-title">What agents can do in the physical world</h2>
+                    <p class="section-text" style="margin: 0 auto;">Each skill is a composable, observable unit of physical capability that an agent can invoke, monitor, and recover from.</p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-card reveal">
+                        <i class="bi-signpost-split skill-icon"></i>
+                        <h3>Navigation</h3>
+                        <p>Autonomous movement through mapped and unmapped environments. Waypoint sequencing, obstacle avoidance, dynamic replanning.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <i class="bi-hand-index skill-icon"></i>
+                        <h3>Manipulation</h3>
+                        <p>Pick, place, push, pull, insert. Grasp planning with force feedback and object-aware contact strategies.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <i class="bi-eye skill-icon"></i>
+                        <h3>Perception</h3>
+                        <p>Scene understanding, object detection, spatial reasoning. Feed structured observations back to the agent for decision-making.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <i class="bi-door-open skill-icon"></i>
+                        <h3>Interaction</h3>
+                        <p>Doors, elevators, switches, touchscreens. Physical interface skills that let robots operate in human-designed spaces.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <i class="bi-shield-check skill-icon"></i>
+                        <h3>Safety & Recovery</h3>
+                        <p>Collision detection, graceful degradation, human handoff. Every skill reports its confidence and knows when to stop.</p>
+                    </div>
+                    <div class="skill-card reveal">
+                        <i class="bi-puzzle skill-icon"></i>
+                        <h3>Composition</h3>
+                        <p>Chain skills into multi-step behaviors. Agents orchestrate sequences; CLAWS handles timing, dependencies, and error propagation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="claws-section claws-section-alt">
+            <div class="container px-4 px-lg-5">
+                <div class="claws-cta reveal">
+                    <div class="section-label">Get Involved</div>
+                    <h2 class="section-title">Open skills for an open world</h2>
+                    <p class="section-text" style="margin: 0 auto;">CLAWS is open. We're building the skill layer in the open with the community. Whether you're building agents, robots, or both &mdash; there's a place for you.</p>
+                    <div class="cta-links">
+                        <a href="https://github.com/VectorRobotics/vector-os-nano" target="_blank" class="btn-claws-primary">View on GitHub</a>
+                        <a href="mailto:bona@iserve.ai" class="btn-claws-ghost">Get in touch</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer-->
+        <footer class="claws-footer py-4">
+            <div class="container px-4 px-lg-5 text-center">
+                <div class="small text-muted">
+                    Copyright &copy; 2024&ndash;2026 iServe Robotics &nbsp;|&nbsp;
+                    <a href="mailto:info@iserve.ai">info@iserve.ai</a>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- Scroll reveal -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var reveals = document.querySelectorAll('.reveal');
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15 });
+                reveals.forEach(function (el) { observer.observe(el); });
+            });
+        </script>
+    </body>
+</html>
